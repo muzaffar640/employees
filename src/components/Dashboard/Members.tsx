@@ -1,0 +1,37 @@
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import { Employee } from "../../types/Employee";
+import ProfileCard from "../Common/ProfileCard";
+
+type MembersProps = {
+  members: Employee[];
+};
+
+const Members: React.FC<MembersProps> = ({ members }) => {
+  return (
+    <div style={{ paddingBottom: "30px" }}>
+      <Typography
+        variant="h5"
+        noWrap
+        component="div"
+        sx={{
+          flexGrow: 1,
+          color: "#868ba2",
+          paddingTop: "20px",
+          paddingBottom: "20px",
+        }}
+      >
+        Members
+      </Typography>
+      <Grid container spacing={2}>
+        {members?.map((members, index) => (
+          <Grid item xs={3} key={index}>
+            <ProfileCard employee={members} />
+          </Grid>
+        ))}
+      </Grid>
+    </div>
+  );
+};
+
+export default Members;
