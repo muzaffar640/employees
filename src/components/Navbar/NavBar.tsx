@@ -5,14 +5,12 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import { useFilterContext } from "../../context/FilterContext";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: "25px",
   backgroundColor: alpha(theme.palette.common.white, 1),
-  // "&:hover": {
-  //   backgroundColor: alpha(theme.palette.common.white, 0.25),
-  // },
   marginLeft: 0,
   width: "100%",
   height: "4ch",
@@ -37,7 +35,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   width: "100%",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     [theme.breakpoints.up("sm")]: {
@@ -50,6 +47,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const NavBar = () => {
+  const { setFilter } = useFilterContext();
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFilter(e.target.value);
+  };
+
   return (
     <Box sx={{ flexGrow: 1, width: "100vw" }}>
       <AppBar>
@@ -74,6 +76,7 @@ export const NavBar = () => {
             <StyledInputBase
               placeholder="Search"
               inputProps={{ "aria-label": "search" }}
+              onChange={handleSearchChange}
             />
           </Search>
         </Toolbar>
