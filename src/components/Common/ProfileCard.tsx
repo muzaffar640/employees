@@ -5,7 +5,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Avatar from "@mui/material/Avatar";
 import { Employee } from "../../types/Employee";
-import { styled } from "@mui/system";
+import { styled } from "@mui/material/styles";
 
 type ProfileCardProps = {
   employee: Employee;
