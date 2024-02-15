@@ -16,7 +16,6 @@ const Administrators: React.FC<AdministratorsProps> = ({ administrators }) => {
         component="div"
         sx={{
           flexGrow: 1,
-          //   display: { xs: "none", sm: "block" },
           color: "#868ba2",
           paddingTop: "20px",
           paddingBottom: "20px",
