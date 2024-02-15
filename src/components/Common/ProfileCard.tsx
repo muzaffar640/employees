@@ -5,30 +5,35 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Avatar from "@mui/material/Avatar";
 import { Employee } from "../../types/Employee";
+import { styled } from "@mui/system";
 
 type ProfileCardProps = {
   employee: Employee;
 };
+const StyledCard = styled(Card)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+  border-radius: 15px;
+  border: none;
+  transition: box-shadow 0.2s ease-in-out;
 
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    background-color: rgba(245, 245, 245, 0.9);
+  }
+`;
+
+const StyledGrid = styled(Grid)`
+  display: flex;
+  align-items: center;
+`;
 const ProfileCard: React.FC<ProfileCardProps> = ({ employee }) => {
   return (
-    <Card
-      sx={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        height: "70px",
-        width: "100%",
-        borderRadius: "15px",
-        border: "none",
-      }}
-    >
-      <Grid
-        sx={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
+    <StyledCard>
+      <StyledGrid>
         <Grid item xs={2} sx={{ paddingLeft: "10px" }}>
           <Avatar alt="Remy Sharp" src={employee?.img} />
         </Grid>
@@ -44,8 +49,8 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ employee }) => {
             </CardContent>
           </Box>
         </Grid>
-      </Grid>
-    </Card>
+      </StyledGrid>
+    </StyledCard>
   );
 };
 
