@@ -27,7 +27,6 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ employee }) => {
         sx={{
           display: "flex",
           alignItems: "center",
-          // justifyContent: "center",
         }}
       >
         <Grid item xs={2} sx={{ paddingLeft: "10px" }}>

@@ -24,9 +24,9 @@ const Members: React.FC<MembersProps> = ({ members }) => {
         Members
       </Typography>
       <Grid container spacing={2}>
-        {members?.map((members, index) => (
+        {members?.map((member, index) => (
           <Grid item xs={3} key={index}>
-            <ProfileCard employee={members} />
+            <ProfileCard employee={member} />
           </Grid>
         ))}
       </Grid>
