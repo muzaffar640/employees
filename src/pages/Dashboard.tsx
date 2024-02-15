@@ -6,6 +6,7 @@ import { Employee } from "../types/Employee";
 
 const Dashboard = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
+  const [filter, setFilter] = useState<string>("");
 
   useEffect(() => {
     fetch(`https://mocki.io/v1/ddb7e0a8-e218-4e36-b1be-b902cdb1c098`)
@@ -27,7 +28,7 @@ const Dashboard = () => {
         background: "#f9f9fb",
       }}
     >
-      <Administrators administrators={administrators} />
+      <Administrators administrators={administrators} filter={filter} />
       <Divider sx={{ marginTop: "50px", marginBottom: "20px" }} />
       <Members members={members} />
     </div>
