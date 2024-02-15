@@ -4,6 +4,12 @@ import Members from "../components/Dashboard/Members";
 import Divider from "@mui/material/Divider";
 import { Employee } from "../types/Employee";
 import { useFilterContext } from "../context/FilterContext";
+import { styled } from "@mui/system";
+
+const StyledDashboard = styled("div")({
+  padding: "64px 60px",
+  backgroundColor: "#f9f9fb",
+});
 
 const Dashboard = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
@@ -28,18 +34,11 @@ const Dashboard = () => {
   );
 
   return (
-    <div
-      style={{
-        paddingTop: "64px",
-        paddingLeft: "60px",
-        paddingRight: "60px",
-        background: "#f9f9fb",
-      }}
-    >
+    <StyledDashboard>
       <Administrators administrators={administrators} />
       <Divider sx={{ marginTop: "50px", marginBottom: "20px" }} />
       <Members members={members} />
-    </div>
+    </StyledDashboard>
   );
 };
 
