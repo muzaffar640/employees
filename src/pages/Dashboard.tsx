@@ -3,9 +3,11 @@ import Administrators from "../components/Dashboard/Administrator";
 import Members from "../components/Dashboard/Members";
 import Divider from "@mui/material/Divider";
 import { Employee } from "../types/Employee";
+import { useFilterContext } from "../context/FilterContext";
 
 const Dashboard = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
+  const { filter } = useFilterContext();
 
   useEffect(() => {
     fetch(`https://mocki.io/v1/ddb7e0a8-e218-4e36-b1be-b902cdb1c098`)
@@ -13,10 +15,17 @@ const Dashboard = () => {
       .then((data) => setEmployees(data));
   }, []);
 
-  const administrators = employees.filter(
+  const filteredEmployees = employees.filter((employee) =>
+    `${employee.first_name} ${employee.last_name}`
+      .toLowerCase()
+      .includes(filter.toLowerCase())
+  );
+  const administrators = filteredEmployees.filter(
     (employee) => employee.role === "admin"
   );
-  const members = employees.filter((employee) => employee.role === "member");
+  const members = filteredEmployees.filter(
+    (employee) => employee.role === "member"
+  );
 
   return (
     <div
