@@ -25,7 +25,7 @@ const Administrators: React.FC<AdministratorsProps> = ({ administrators }) => {
       </Typography>
       <Grid container spacing={2}>
         {administrators?.map((administrator, index) => (
-          <Grid item xs={3} key={index}>
+          <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
             <ProfileCard employee={administrator} />
           </Grid>
         ))}
