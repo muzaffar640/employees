@@ -10,6 +10,9 @@ function App() {
       primary: {
         main: "#84a3f6",
       },
+      info: {
+        main: "#FFFFFF",
+      },
     },
   });
 
